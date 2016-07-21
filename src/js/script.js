@@ -141,7 +141,7 @@
 			var playDuration = moment.duration(video.currentTime, 'seconds');
 			curPlayTime.add(playDuration);
 			// Проверяем, не наступило ли время проигрывания очередного субтитра
-			if (curPlayTime >= subtitles.getCurSub().startTime) {
+			if (curPlayTime >= subtitles.getCurSub().endTime) {
 				currentSubtitle = subtitles.getCurSub();
 				subtitles.moveNextSub();
 				isSubtitlePlaying = true;

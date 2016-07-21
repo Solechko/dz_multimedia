@@ -46,10 +46,10 @@ function SrtSubtitles(srtFileUrl, loadedCallback) {
 	function moveTargetSub(time) {
 		i = 0;
 		var curTime = moment(time);
-		var curSubTime = moment(srtData[i].startTime, SRT_TIME_FORMAT);
+		var curSubTime = moment(srtData[i].endTime, SRT_TIME_FORMAT);
 		while (curSubTime < curTime && i < srtData.length - 1) {
 			i++;
-			curSubTime = moment(srtData[i].startTime, SRT_TIME_FORMAT);
+			curSubTime = moment(srtData[i].endTime, SRT_TIME_FORMAT);
 		}
 		subIndex = i;
 		curSub = createSub(srtData[i]);

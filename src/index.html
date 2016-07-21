@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<title>Киноглушитель</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oranienbaum&subset=latin,cyrillic">
+</head>
+<body class="page">
+	<h1 class="header">Киноглушитель</h1>
+	<div class="processor">
+		<video id="source-video" class="process-item process-item-hidden" muted>
+			<source src="files/video.mp4" type="video/mp4">
+			<source src="files/video.webm" type="video/webm">
+			Ваш браузер не поддерживает видео
+		</video>
+		<video id="overlay-video" class="process-item process-item-hidden" loop="loop">
+			<source src="files/overlay-video.mp4" type="video/mp4">
+			<source src="files/overlay-video.webm" type="video/webm">
+			Ваш браузер не поддерживает видео
+		</video>
+		<canvas id="canvas" class="process-item process-item-hidden"></canvas>
+		<canvas id="overlay-canvas"  class="process-item process-item-hidden"></canvas>
+		<canvas id="webgl-canvas" class="process-item"></canvas>   
+		<audio id="audio" src="files/audio.ogg" class="process-item process-item-hidden"></audio>
+		
+		<div class="control">
+			<input id="play-button" class="control-item" type="button"/>
+			<input id="play-range" class="control-item" type="range"/>
+			<input id="volume-button" class="control-item" type="button"/>
+			<input id="volume-range" class="control-item" type="range"/>
+		</div>	
+	</div>    
+</body>
+<script src="js/script.js"></script>
+</html>

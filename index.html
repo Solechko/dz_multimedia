@@ -23,7 +23,10 @@
 		<canvas id="canvas" class="process-item process-item-hidden"></canvas>
 		<canvas id="overlay-canvas"  class="process-item process-item-hidden"></canvas>
 		<canvas id="webgl-canvas" class="process-item"></canvas>   
-		<audio id="audio" src="files/audio.ogg" class="process-item process-item-hidden"></audio>
+		<audio id="audio" class="process-item process-item-hidden">
+			<source src="files/audio.ogg" type="audio/ogg">
+			<source src="files/audio.mp3" type="audio/mp3">
+		</audio>
 		
 		<div class="control">
 			<input id="play-button" class="control-item" type="button"/>

@@ -47,7 +47,7 @@ function SrtSubtitles(srtFileUrl, loadedCallback) {
 		i = 0;
 		var curTime = moment(time);
 		var curSubTime = moment(srtData[i].startTime, SRT_TIME_FORMAT);
-		while (curSubTime < curTime) {
+		while (curSubTime < curTime && i < srtData.length - 1) {
 			i++;
 			curSubTime = moment(srtData[i].startTime, SRT_TIME_FORMAT);
 		}

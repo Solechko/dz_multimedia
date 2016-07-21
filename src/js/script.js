@@ -84,7 +84,9 @@
 		function switchVideoEnd() {
 			var x = playRange.value;			
 			video.currentTime = video.duration * playRange.value / 100;
-			subtitles.moveTargetSub(moment(video.currentTime, 'ss'));
+			var curPlayTime = moment('0', 'ss');
+			curPlayTime.add(moment.duration(video.currentTime, 'seconds'));
+			subtitles.moveTargetSub(curPlayTime);
 			isSubtitlePlaying = false;
 			playVideo();
 		}
@@ -112,7 +114,7 @@
 		audio.pause();
 		isVideoPlaying = false;	
 		play.classList.remove('play-button-paused');
-	}	
+	}
 
 	// Основной цикл отрисовки
 	function mainLoop(t) {

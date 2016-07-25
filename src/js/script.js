@@ -265,11 +265,7 @@
 		gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoordinates), gl.STATIC_DRAW);
 		gl.enableVertexAttribArray(texcoordLocation);
 		gl.vertexAttribPointer(texcoordLocation, 2, gl.FLOAT, false, 0, 0);
-	}
 
-	// Конвертация кадра в черно-белое изображение и добавление шума на графическом процессоре
-	function postprocessWebGL(canvas, gl, sourceCanvas) {
-		gl.uniform1f(GL_TIME_UNIFORM, GL_TIME / 1000);
 		var texture = gl.createTexture();
 		gl.bindTexture(gl.TEXTURE_2D, texture);
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
@@ -277,12 +273,17 @@
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
 		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, sourceCanvas);
+	}
 
+	// Конвертация кадра в черно-белое изображение и добавление шума на графическом процессоре
+	function postprocessWebGL(canvas, gl, sourceCanvas) {
+		gl.uniform1f(GL_TIME_UNIFORM, GL_TIME / 1000);
+
+		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, sourceCanvas);
 		gl.viewport(0,0,canvas.width,canvas.height);
 		gl.enable(gl.DEPTH_TEST);
 		gl.clear(gl.COLOR_BUFFER_BIT);
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
-		gl.deleteTexture(texture);
 	}
 	
 	// Наложение кадра с царапинами на кадр основного видео потока
